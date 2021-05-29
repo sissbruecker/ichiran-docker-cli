@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  database:
+    build:
+      context: .
+      dockerfile: images/database/Dockerfile
+      args:
+        DB_DUMP_PATH: ${DB_DUMP_PATH}
+  cli:
+    build:
+      context: .
+      dockerfile: images/cli/Dockerfile
