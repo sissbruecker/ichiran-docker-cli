@@ -1,13 +1,15 @@
 version: "3.9"
 
 services:
-  database:
+  # Template image that is used as a starting point for building the CLI image
+  template:
     build:
       context: .
-      dockerfile: images/database/Dockerfile
+      dockerfile: ./Dockerfile
       args:
         DB_DUMP_PATH: ${DB_DUMP_PATH}
+        JM_DICT_DB_PATH: ${JM_DICT_DB_PATH}
+  # Final CLI image
   cli:
-    build:
-      context: .
-      dockerfile: images/cli/Dockerfile
+    image: sissbruecker/ichiran-cli:latest
+
